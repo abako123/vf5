@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h2>git에 프로젝트 올리기</h2>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
