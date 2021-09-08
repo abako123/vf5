@@ -6,8 +6,8 @@
       dark
     >
       <v-app-bar-nav-icon @click="drawer = !drawer"/>
-      <v-toolbar-title>Page title</v-toolbar-title>
-      <v-spacer></v-spacer>
+      <site-title :title="title"></site-title>
+      <v-spacer/>
 
       <v-btn icon to="/xxx">
         <v-icon>mdi-magnify</v-icon>
@@ -33,37 +33,35 @@
       </v-list-item>
       <v-divider></v-divider>
 
-      <v-list dense nav>
-        <v-list-item v-for="item in items" :key="item.title" link>
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
+      <site-menu></site-menu>
     </v-navigation-drawer>
 
     <v-main>
       <router-view></router-view>
     </v-main>
 
-    <v-footer app color="primary" dark fixed>
-      <v-spacer></v-spacer>
-      <div>&copy; {{ new Date().getFullYear() }} ABAKO-Simsan</div>
-    </v-footer>
+    <site-footer :footer="footer"></site-footer>
 
   </v-app>
 </template>
 
 <script>
+import SiteTitle from '@/views/site/SiteTitle'
+import SiteFooter from '@/views/site/SiteFooter'
+import SiteMenu from '@/views/site/SiteMenu'
+
 export default {
+  components: { SiteTitle, SiteFooter, SiteMenu },
   name: 'App',
   data () {
     return {
-      drawer: false
+      drawer: false,
+      items: [],
+      title: '나의 타이틀입니다',
+      footer: 'ABAKO-Simsan'
     }
+  },
+  mounted () {
   }
 }
 </script>
